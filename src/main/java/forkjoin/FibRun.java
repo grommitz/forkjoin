@@ -35,7 +35,7 @@ public class FibRun {
 
 	public static void main(String[] args) {
 		
-		for (int r=0; r<500; r+=1) {
+		for (int r=0; r<100; r++) {
 			Stopwatch s = Stopwatch.createStarted();
 		
 			new FibRun().runSingleThreaded();
@@ -44,12 +44,12 @@ public class FibRun {
 			
 			new FibRun().runParallel(new FibTask1());
 			final long t1 = s.elapsed(TimeUnit.MILLISECONDS) - t0;
-			System.out.println("with fork/join(" + parallelism + "), 1 thread per run = " + t1 + " ms");
+			System.out.println("with fork/join(" + parallelism + " cpus), 1 thread per run = " + t1 + " ms");
 	
-			int threads = (r+1) * 1;
+			int threads = (r+1) * 10;
 			new FibRun().runParallel(new FibTask2(threads));
 			final long t2 = s.elapsed(TimeUnit.MILLISECONDS) - t0 - t1;
-			System.out.println("with fork/join(" + parallelism + "), " + threads + " threads = " + t2 + " ms");
+			System.out.println("with fork/join(" + parallelism + " cpus), " + threads + " threads = " + t2 + " ms");
 		}
 	}
 
