@@ -11,3 +11,5 @@ Second F/J method decomposes the 2M jobs into a fixed number of threads running 
 increases from 2 to approx. 12 threads reaching a max of about a 5x speedup over single threaded. This stays roughly
 constant with thread count up to several tens of thousands, after that it starts to tail off due to the overhead of so 
 many threads.
+
+MC
